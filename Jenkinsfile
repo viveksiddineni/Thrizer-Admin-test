@@ -13,7 +13,7 @@ pipeline {
         pollSCM('H/5 * * * *')
     }
     environment {
-        PROJECT_NAME = "PLEASE UPDATE WITH DEPLOYMENT NAME"
+        PROJECT_NAME = "thrizer-admin"
         TYPE = "web"
         DOCKER_REPO_NAME = "PLEASE UPDATE THE DOCKER REPOSITORY NAME"
     }
@@ -44,7 +44,7 @@ pipeline {
                     sshagent (credentials: ['gitcredsthreethrizer']) { 
                         nodejs(configId: 'kw-npmrc', nodeJSInstallationName: 'Node.js 12.16') {
                             withEnv([
-                                "IMAGE_NAME=PLEASE UPDATE WITH DEPLOYMENT NAME",
+                                "thrizer-admin",
                                 "BUILD_VERSION=" + (params.BUILD_VERSION ?: env.VERSION)
                             ]) {
                                 checkout scm
