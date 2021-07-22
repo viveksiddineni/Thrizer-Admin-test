@@ -80,14 +80,12 @@ pipeline {
             }
             steps {
                 configFileProvider([
-                    configFile(fileId: 'thrizer-loopback-ci-compose-file', targetLocation: 'docker-compose.yml'),
-                    configFile(fileId: 'mongo-init.js', targetLocation: 'mongo-init.js')
+                    configFile(fileId: 'thrizer-admin-ci-compose-file', targetLocation: 'docker-compose.yml')
                 ]) {
                         withEnv([ 
                           "IMAGE_NAME=labshare/thrizer_clinician_labshare_api",
                           "BUILD_VERSION=${params.BUILD_VERSION != '' ? params.BUILD_VERSION : env.BUILD_VERSION}"]) {
                             script {
-                                sh "chmod 755 mongo-init.js"
                                 def docker = new org.labshare.Docker()
                                 docker.deployDockerAPI()
                                 sh "sleep 5; docker start nginx-gen"
