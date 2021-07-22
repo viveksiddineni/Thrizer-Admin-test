@@ -13,9 +13,9 @@ pipeline {
         pollSCM('H/5 * * * *')
     }
     environment {
-        PROJECT_NAME = "PLEASE UPDATE WITH DEPLOYMENT NAME"
+        PROJECT_NAME = "thrizer-admin"
         TYPE = "web"
-        DOCKER_REPO_NAME = "PLEASE UPDATE THE DOCKER REPOSITORY NAME"
+        DOCKER_REPO_NAME = "labshare/thrizer_clinician_labshare_api"
     }
     stages {
         stage('Clean') {
@@ -44,7 +44,7 @@ pipeline {
                     sshagent (credentials: ['gitcredsthreethrizer']) { 
                         nodejs(configId: 'kw-npmrc', nodeJSInstallationName: 'Node.js 12.16') {
                             withEnv([
-                                "IMAGE_NAME=thrizer-admin",
+                                "IMAGE_NAME=labshare/thrizer_clinician_labshare_api",
                                 "BUILD_VERSION=" + (params.BUILD_VERSION ?: env.VERSION)
                             ]) {
                                 checkout scm
@@ -54,7 +54,7 @@ pipeline {
                                     
                                     docker.build("${env.IMAGE_NAME}", "--no-cache --build-arg SOURCE_FOLDER=./${env.BUILD_VERSION} .")
 
-                                    docker.withRegistry('PLEASE UPDATE THE DOCKER REPOSITORY NAME', 'PLEASE UPDATE THE DOCKER REGISTRY CREDENTIAL') {
+                                    docker.withRegistry("https://registry-1.docker.io/v2/","f16c74f9-0a60-4882-b6fd-bec3b0136b84") {
                                         docker.image("${env.IMAGE_NAME}").push("${BUILD_VERSION}")
                                     }
                                 }
@@ -71,8 +71,8 @@ pipeline {
             }
             steps {
                 configFileProvider([
-                    configFile(fileId: 'PLEASE UPDATE WITH DEPLOYMENT NAME-ci-docker-config', targetLocation: 'app.conf'),
-                    configFile(fileId: 'PLEASE UPDATE WITH DEPLOYMENT NAME-ci-docker-compose.yml', targetLocation: 'docker-compose.yml')
+                    configFile(fileId: 'thrizer-loopback-ci-compose-file', targetLocation: 'docker-compose.yml'),
+                    configFile(fileId: 'mongo-init.js', targetLocation: 'mongo-init.js')
                 ]) {
                     withAWS(credentials:'aws-jenkins-build') {
                         //env.DOCKER_LOGIN=""
@@ -82,7 +82,7 @@ pipeline {
                         '''
                         ecrLogin()
                         withEnv([
-                            "IMAGE_NAME=PLEASE UPDATE WITH DEPLOYMENT NAME",
+                            "IMAGE_NAME=labshare/thrizer_clinician_labshare_api",
                             "BUILD_VERSION=" + (params.BUILD_VERSION ?: env.VERSION)
                         ]) {
                             script {
