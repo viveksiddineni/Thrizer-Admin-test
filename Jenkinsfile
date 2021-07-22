@@ -49,13 +49,17 @@ pipeline {
                             ]) {
                                 checkout scm
                                 script {
-                                    def build = new org.labshare.Build()
-                                    build.buildNodeJS()
-                                    
-                                    docker.build("${env.IMAGE_NAME}", "--no-cache --build-arg SOURCE_FOLDER=./${env.BUILD_VERSION} .")
-
-                                    docker.withRegistry("https://registry-1.docker.io/v2/","f16c74f9-0a60-4882-b6fd-bec3b0136b84") {
+                                        docker.build("${env.IMAGE_NAME}", "--build-arg NPM_TOKEN=${LABSHARE_NPM_TOKEN} --no-cache ./")
+                                        docker.withRegistry("https://registry-1.docker.io/v2/","f16c74f9-0a60-4882-b6fd-bec3b0136b84") {
                                         docker.image("${env.IMAGE_NAME}").push("${BUILD_VERSION}")
+                                    
+                                    //def build = new org.labshare.Build()
+                                    //build.buildNodeJS()
+                                    
+                                    //docker.build("${env.IMAGE_NAME}", "--no-cache --build-arg SOURCE_FOLDER=./${env.BUILD_VERSION} .")
+
+                                    //docker.withRegistry("https://registry-1.docker.io/v2/","f16c74f9-0a60-4882-b6fd-bec3b0136b84") {
+                                        //docker.image("${env.IMAGE_NAME}").push("${BUILD_VERSION}")
                                     }
                                 }
                             }
