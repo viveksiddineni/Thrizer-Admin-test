@@ -42,7 +42,7 @@ pipeline {
             steps {
                 retry(3) {
                     sshagent (credentials: ['PLEASE UPDATE THE CREDENTIALS']) {
-                        nodejs(configId: 'kw-npmrc', nodeJSInstallationName: 'Default Node.js') {
+                        nodejs(configId: 'kw-npmrc', nodeJSInstallationName: 'Node 14.x') {
                             withEnv([
                                 "IMAGE_NAME=PLEASE UPDATE WITH DEPLOYMENT NAME",
                                 "BUILD_VERSION=" + (params.BUILD_VERSION ?: env.VERSION)
