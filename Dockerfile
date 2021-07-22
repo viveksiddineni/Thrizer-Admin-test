@@ -17,4 +17,4 @@ RUN apk update && apk upgrade && \
 RUN NODE_OPTIONS=--max_old_space_size=4096 lsc build site && \
     rm -f .npmrc
 FROM labshare/docker-base-web
-COPY --from=build /var/www/app/dist/thrizer-client-app/ /var/www/app/
+COPY --from=build /var/www/app/dist/thrizer-admin-app/ /var/www/app/
