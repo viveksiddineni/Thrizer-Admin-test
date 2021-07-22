@@ -67,7 +67,7 @@ pipeline {
  
         stage('Deploy - CI') {
             agent {
-                label 'PLEASE UPDATE THE LABEL OF THE TARGET SERVER'
+                label 'thrizer_labshare'
             }
             steps {
                 configFileProvider([
