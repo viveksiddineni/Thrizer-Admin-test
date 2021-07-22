@@ -41,7 +41,7 @@ pipeline {
             when { expression { return env.BUILD == 'true' }}
             steps {
                 retry(3) {
-                    sshagent (credentials: ['PLEASE UPDATE THE CREDENTIALS']) {
+                    sshagent (credentials: ['PLEASE UPDATE THE CREDENTIALS']) { 
                         nodejs(configId: 'kw-npmrc', nodeJSInstallationName: 'LTS Node.js 10') {
                             withEnv([
                                 "IMAGE_NAME=PLEASE UPDATE WITH DEPLOYMENT NAME",
