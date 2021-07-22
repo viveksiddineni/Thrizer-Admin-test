@@ -1,0 +1,13 @@
+<div class="mat-select-search-inner">
+  <mat-form-field appearance="outline">
+  <input type="search" autocomplete="off" class="mat-select-search-input" matInput [formControl]="searchList"
+    (keydown)="_handleKeydown($event)" #searchSelectInput [placeholder]="placeholder" maxlength="100" />
+  
+  <div matSuffix class="searchSuffix">
+    <button class="close" *ngIf="searchList.value" matSuffix mat-icon-button aria-label="Clear" (click)="clearValue()">
+      <mat-icon>clear</mat-icon>
+    </button>
+  </div>
+</mat-form-field>
+</div>
+<mat-option disabled></mat-option>

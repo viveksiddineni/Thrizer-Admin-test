@@ -1,0 +1,60 @@
+<!-- <div class="form-wrap">
+    <h1>Log into your <br> Account </h1>
+    <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid&&onSubmit()">
+        <mat-form-field appearance="outline">
+            <input formControlName="email" matInput [maxLength]="101" placeholder="Email address" autocomplete="off">
+            <mat-error>{{ getControl('email') | validate:'email'}}</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <input [maxLength]="23" formControlName="password" matInput [type]="hide ? 'password' : 'text'" placeholder="Password">
+            <button type="button" mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+            </button>
+            <mat-error>{{getControl('password') | validate:'password'}}</mat-error>
+        </mat-form-field>
+        <div class="center">
+            <button type="submit" color="primary" mat-flat-button>LOG IN</button>
+        </div>
+        <p class="center"><a [routerLink]="'FORGOT_PASSWORD'|absolutePath" class="link">Forgot password?</a></p>
+    </form>
+</div> -->
+
+<div class="inner_page_Wrapper">
+    <div class="inner_wrapper">
+        <h3 class="title">
+            Admin Sign In
+        </h3>
+        <p class="sub_title">
+            Sign in with your Username/Email ID
+        </p>
+        <form [formGroup]="loginForm" (ngSubmit)="loginForm.valid&&onSubmit()">
+            <div class="form_wrapper">
+                <div class="form_group">
+                    <mat-label>Email ID</mat-label>
+                    <mat-form-field appearance="outline">
+                        <input formControlName="email" matInput [maxLength]="101" placeholder="Enter Email Address"
+                            autocomplete="off">
+                        <mat-error>{{ getControl('email') | validate:'email'}}</mat-error>
+                    </mat-form-field>
+                </div>
+
+                <div class="form_group">
+                    <mat-label>Password</mat-label>
+                    <mat-form-field appearance="outline">
+                        <input [maxLength]="23" formControlName="password" matInput [type]="hide ? 'password' : 'text'"
+                            placeholder="Enter Password">
+                        <button type="button" mat-icon-button matSuffix (click)="hide = !hide"
+                            [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide">
+                            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                        </button>
+                        <mat-error>{{getControl('password') | validate:'password'}}</mat-error>
+                    </mat-form-field>
+                </div>
+                <button class="btn_primary">
+                    Sign In
+                </button>
+                <a [routerLink]="'FORGOT_PASSWORD'|absolutePath" class="link">Forgot Password ?</a>
+            </div>
+        </form>
+    </div>
+</div>

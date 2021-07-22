@@ -1,0 +1,27 @@
+<div class="mat-dialog-wrap">
+    <button class="mat-close" mat-icon-button (click)="cancel()">
+    <mat-icon>close</mat-icon>
+  </button>
+    <button type="button" class="upload_btn " mat-flat-button color="primary">
+    Select Image
+    <input type="file" #img accept="image/*" (change)="fileChangeEvent($event)" />
+  </button>
+    <!-- <span class="info">(Image Resolution: 1920 x 1080 px)</span> -->
+    <mat-dialog-content>
+        <div class="crop_wrap">
+            <div class="image_preview" [ngClass]="data.class ? data.class : ''">
+                <ng-container>
+                    <img [src]="croppedImage" />
+                </ng-container>
+            </div>
+
+            <div class="cropper_area">
+                <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="aspectRatio" [resizeToWidth]="resizeToWidth" [cropperMinWidth]="resizeToWidth" format="png" (imageCropped)="imageCropped($event)"></image-cropper>
+            </div>
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <button type="submit" (click)="cancel()" mat-stroked-button color="default">Cancel</button>
+        <button type="submit" (click)="cropped()" mat-flat-button color="primary">Crop</button>
+    </mat-dialog-actions>
+</div>

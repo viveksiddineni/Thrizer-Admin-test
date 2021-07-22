@@ -1,0 +1,31 @@
+header {
+    padding: 0 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 60px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid #e8e8e8;
+    .right_col{
+        .user_menu_wrapper {
+            display: flex;
+            align-items: center;
+            background: #a94bf3;
+            padding: 10px;
+            border-radius: 6px;
+            cursor: pointer;
+            .name {
+                margin-bottom: 0;
+                margin-right: 3px;
+                color: #fff;
+            }
+            mat-icon{
+                color: #fff;
+            }
+        }
+    }
+}

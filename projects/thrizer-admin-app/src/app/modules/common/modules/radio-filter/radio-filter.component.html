@@ -1,0 +1,11 @@
+<h4 class="mat-h4">{{ config?.label }}</h4>
+<div class="cstm_check_wrapper">
+    <mat-radio-group>
+        <mat-radio-button [value]="item[config?.valueKey]" *ngFor="let item of config?.data" (change)="onValueChange($event)" #radiobtn>
+             {{item[config.viewKey]}}
+        </mat-radio-button>
+
+    </mat-radio-group>
+
+</div>
+

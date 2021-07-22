@@ -1,0 +1,40 @@
+.page_main_wrapper {
+    width: 100%;
+    height: 100%;
+    .inner_row_wrapper {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      height: 100%;
+      .left_col {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background: #eeeeeeba;
+        // background: url('../../../assets/images/login_bg.jpg');
+        background-size: cover;
+        .logo {
+          width: 250px;
+          height: auto;
+          margin-bottom: 25px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .banner_text {
+          font-size: 20px;
+          color: #000;
+          opacity: 0.6;
+        }
+      }
+      .right_col{
+          width: 50%;
+          height: 100%;
+      }
+    }
+  }
+  

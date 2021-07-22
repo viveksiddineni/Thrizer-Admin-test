@@ -1,0 +1,21 @@
+<header>
+<figure class="logo_hedaer" [routerLink]="['/']">
+    <img src="assets/images/logo.svg" alt="">
+</figure>
+<div class="right_col" *ngIf="profileDetail">
+    <div class="user_menu_wrapper" [matMenuTriggerFor]="menu">
+        <p class="name">
+            {{profileDetail[0]?.name | titlecase}}
+        </p>
+        <mat-icon>
+            expand_more               
+        </mat-icon>
+    </div>
+</div>
+
+</header>
+
+<mat-menu #menu="matMenu">
+    <button mat-menu-item>Item 1</button>
+    <button mat-menu-item>Item 2</button>
+  </mat-menu>

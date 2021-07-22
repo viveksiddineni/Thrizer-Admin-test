@@ -1,0 +1,35 @@
+.inner_page_Wrapper {
+    width: 100%;
+    height: 100%;
+    .inner_wrapper {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .title {
+            font-size: 30px;
+            font-weight: 300;
+            margin-bottom: 20px;
+        }
+        .sub_title {
+            color: #606060;
+            margin-bottom: 30px;
+            text-align: center;
+            line-height: 1.5;
+        }
+        .form_wrapper {
+            width: 400px;
+            max-width: 100%;
+        }
+        .link {
+            color: #606060;
+            margin: 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+        }
+    }
+}

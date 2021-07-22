@@ -1,0 +1,13 @@
+<div class="filter__header">
+  <span (click)="onCloseHandler()" style="margin: 0 10px;cursor: pointer;">
+    <mat-icon>arrow_back</mat-icon>
+  </span>
+  <span class="filter__title">{{ label }}</span>
+</div>
+<div class="filter_body">
+  <ng-content></ng-content>
+</div>
+<div class="filter__actions">
+  <button type="button" mat-stroked-button (click)="reset.emit()">Clear</button>
+  <button type="button" mat-flat-button color="primary" (click)="apply.emit()">Apply</button>
+</div>

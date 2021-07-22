@@ -1,0 +1,68 @@
+<app-breadcrumb>
+  <li class="breadcrumb-item">Suggestions Management List</li>
+</app-breadcrumb>
+<nav mat-tab-nav-bar >
+  <a mat-tab-link *ngFor="let link of suggestionTypes"
+    [routerLink]="['SUGGESTION_MANAGEMENT' | absolutePath, link.value]"
+    routerLinkActive #rla="routerLinkActive"
+    [active]="rla.isActive" (click)="tabHandler(link)"> {{link.viewValue}} </a>
+</nav>
+<mat-card>
+  <app-listing (changeListEvent)="onTableEventChange($event)" [config]="listingConfig">
+    <span [hidden]="filterCount === 0" matTooltip="{{ filterCount }} filter" filter-count>+{{ filterCount }}
+    </span>
+    <button type="button" mat-stroked-button color="primary" add-wrapper (click)="addSuggestion()">Add</button>
+    <app-table [tableSource]="tableSource">
+      <ng-template appFor="label" let-row="row"><span>
+          {{
+          row.label
+          }}
+        </span>
+      </ng-template>
+      <ng-template appFor="type" let-row="row">{{
+        row?.type | suggestionType
+        }}</ng-template>
+      <ng-template appFor="status" let-row="row">{{
+        row?.status | status
+        }}
+      </ng-template>
+      <ng-template appFor="createdAt" let-row="row">{{
+        row?.createdAt | customDate
+      }}
+      </ng-template>
+      <ng-template appFor="actions" let-row="row">
+        <div class="action-btn-group">
+          <button *ngIf="row?.status == -1" mat-stroked-button type="button" color="primary" (click)="markStatus(row , suggestionStatus[1])"
+              aria-label="Example icon-button with a heart icon">
+              Accept
+            </button>
+            <button *ngIf="row?.status == -1" mat-stroked-button type="button" color="primary" (click)="markStatus(row , suggestionStatus[2])"
+              aria-label="Example icon-button with a heart icon">
+              Reject
+            </button>
+            <button *ngIf="row.status == 3 || row.status == 4" mat-stroked-button type="button" color="primary" (click)="markStatus(row , row.status == 3 ? suggestionStatus[4] : suggestionStatus[3])"
+              aria-label="Example icon-button with a heart icon">
+              {{row.status == 3 ? 'Inactive' : 'Active'}}
+            </button>
+            <button
+            type="button"
+            *ngIf="row.status == 3 || row.status == 4"
+            mat-stroked-button
+            color="primary"
+            matTooltip="Edit"
+            (click)="editSuggestion(row)"
+            matTooltip="Edit"
+            >
+            Edit
+          </button>
+          <span *ngIf="row.status == 2" class="rejected">
+            No Actions Allowed
+          </span>
+          <!-- <button mat-stroked-button type="button" (click)="deleteWord(row._id, row.sn - 1)" matTooltip="Delete">
+            Delete
+          </button> -->
+        </div>
+      </ng-template>
+    </app-table>
+  </app-listing>
+</mat-card>

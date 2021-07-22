@@ -1,0 +1,34 @@
+<table mat-table [matSortDisableClear]="true" (matSortChange)="sortData($event)" [dataSource]="dataSource"
+    class="mat-elevation-z1" *ngIf="!!tableSource" matSort>
+    <ng-container matColumnDef="selection">
+        <th mat-header-cell *matHeaderCellDef>
+            <mat-checkbox (change)="onHeadSelectionChangeHandler($event)" color="primary"></mat-checkbox>
+        </th>
+        <td mat-cell *matCellDef="let element">
+            <mat-checkbox (change)="onSelectionChangeHandler($event)" color="primary"></mat-checkbox>
+        </td>
+    </ng-container>
+    <ng-container [matColumnDef]="column.id" *ngFor="let column of tableSource.columns">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header
+            [disabled]="!column.sorting || this.tableSource.data.length === 0">
+            {{ column.title }}
+        </th>
+        <td mat-cell *matCellDef="let element">
+            <ng-container [ngTemplateOutlet]="templateOutlet(column) || columnTemplate"
+                [ngTemplateOutletContext]="{ row: element }"></ng-container>
+            <ng-template #columnTemplate>
+                <div [innerHTML]="column.resolve && column.resolve(element)"></div>
+                <!-- {{ column.resolve && column.resolve(element) }} -->
+            </ng-template>
+        </td>
+    </ng-container>
+    <!-- <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef>ACTIONS</th>
+        <td mat-cell *matCellDef="let element">
+            <ng-template []="actions ? actions.template : null" [ngTemplateOutletContext]="{ row: element }">
+            </ng-template>ngTemplateOutlet
+        </td>
+    </ng-container> -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+</table>

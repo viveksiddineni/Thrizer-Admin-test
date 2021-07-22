@@ -1,0 +1,122 @@
+{
+  "name": "thrizer-admin",
+  "version": "0.0.0",
+  "description": "",
+  "scripts": {
+    "ng": "ng",
+    "start": "lsc start site",
+    "build": "lsc build site",
+    "build:lib": "ng build thrizer-admin-lib",
+    "test": "ng test",
+    "test:ci": "ng test --watch=false --browsers=ChromeHeadless",
+    "e2e": "ng e2e",
+    "prettier": "prettier \"**/*.ts\" \"**/*.js\" \"**/*.md\"",
+    "lint": "npm run prettier:check && ng lint",
+    "lint:fix": "ng lint -- --fix && npm run prettier:fix",
+    "tslint": "tslint -p tsconfig.json -c tslint.json",
+    "tslint:fix": "tslint -p tsconfig.json -c tslint.json --fix",
+    "prettier:check": "npm run prettier -- -l",
+    "prettier:cli": "npm run prettier -- -c",
+    "prettier:fix": "npm run prettier:cli -- --write",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "coverage": "npm run test:ci -- --code-coverage",
+    "ngcc": "ngcc",
+    "test:cypress": "cypress run --browser chrome"
+  },
+  "contributors": "https://github.com/LabShare/thrizer-admin/graphs/contributors",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/LabShare/thrizer-admin.git"
+  },
+  "bugs": {
+    "url": "https://github.com/LabShare/thrizer-admin/issues"
+  },
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~9.1.4",
+    "@angular/cdk": "^9.2.4",
+    "@angular/common": "~9.1.4",
+    "@angular/compiler": "~9.1.4",
+    "@angular/core": "~9.1.4",
+    "@angular/forms": "~9.1.4",
+    "@angular/localize": "^9.1.4",
+    "@angular/material": "^9.2.4",
+    "@angular/platform-browser": "~9.1.4",
+    "@angular/platform-browser-dynamic": "~9.1.4",
+    "@angular/router": "~9.1.4",
+    "@labshare/ls-font": "^1.0.0",
+    "@labshare/ngx-components": "^2.13.0",
+    "@labshare/ngx-core-services": "^3.1.2",
+    "@ng-bootstrap/ng-bootstrap": "^5.2.2",
+    "@ngx-formly/bootstrap": "^5.5.11",
+    "@ngx-formly/core": "^5.5.11",
+    "bootstrap": "^4.4.1",
+    "date-fns": "^2.16.1",
+    "ng-multiselect-dropdown": "^0.2.10",
+    "ngx-quill": "^6.1.0",
+    "quill": "^1.3.7",
+    "font-awesome": "^4.7.0",
+    "immutable": "^4.0.0-rc.12",
+    "jwt-decode": "^2.2.0",
+    "ngx-json-viewer": "^2.4.0",
+    "prismjs": "^1.19.0",
+    "rxjs": "~6.5.4",
+    "tslib": "^1.10.0",
+    "aws-sdk": "^2.713.0",
+    "zone.js": "~0.10.2"
+  },
+  "packageDependencies": [
+    "@labshare/shell-ui"
+  ],
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.901.4",
+    "@angular-devkit/build-ng-packagr": "~0.901.12",
+    "@angular/cli": "~9.1.4",
+    "@angular/compiler-cli": "~9.1.4",
+    "@angular/language-service": "~9.1.4",
+    "@commitlint/cli": "^8.3.5",
+    "@commitlint/config-conventional": "^8.3.4",
+    "@labshare/semantic-release-config": "^1.1.2",
+    "@labshare/shell-ui": "^2.2.0",
+    "@pnp/common": "^1.3.11",
+    "@pnp/logging": "^1.3.11",
+    "@pnp/nodejs": "^1.3.11",
+    "@pnp/odata": "^1.3.11",
+    "@pnp/sp": "^1.3.11",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "^8.10.62",
+    "codelyzer": "^5.1.2",
+    "cordova": "~9.0.0",
+    "electron": "~5.0.0",
+    "husky": "^4.2.3",
+    "jasmine-core": "~3.5.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~5.0.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~2.1.0",
+    "karma-jasmine": "~3.0.1",
+    "karma-jasmine-html-reporter": "^1.4.2",
+    "lint-staged": "^10.0.8",
+    "ng-packagr": "^9.0.0",
+    "powershell": "^2.3.1",
+    "prettier": "1.19.1",
+    "protractor": "~5.4.3",
+    "ts-node": "~8.3.0",
+    "tslint": "~6.1.0",
+    "typescript": "~3.8.3"
+  },
+  "optionalDependencies": {
+    "cypress": "^6.8.0"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,js,css,md,html}": "npm run lint:fix"
+  }
+}

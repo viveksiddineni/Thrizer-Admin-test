@@ -1,0 +1,57 @@
+<mat-card-title class="transactions-listing pd-0">
+  <span class="headerText">{{ label }}</span>
+  <div class="listHeader pdlr-15">
+    <div class="searchWrapper" *ngIf="config.options.search">
+      <app-search-filter
+        (setSearch)="searchData($event)"
+        [placeholder]="config.options.searchPlaceholder"
+      >
+      </app-search-filter>
+    </div>
+    <div class="sortby-action-wrap">
+    <div class="sortBy">
+      <ng-content select="[sort-wrapper]"></ng-content>
+    </div>
+    <div class="actionWrapper">
+      <span class="totalList" *ngIf="totalList">Total : {{ totalList }} </span>
+      <ng-content select="[add-wrapper]"></ng-content>
+      <span *ngIf="childTable.selection">
+        <ng-content select="[payout-wrapper]"></ng-content>
+      </span>
+
+      <button
+        mat-button
+        mat-icon-button
+        mat-mini-fab
+        style="cursor: pointer"
+        *ngIf="config.options.filter"
+        class="filterButton pull-right"
+        matTooltip="Filter"
+        (click)="onFilterHandler()"
+      >
+        <ng-content select="[filter-count]"></ng-content>
+        <mat-icon>filter_list</mat-icon>
+      </button>
+    </div>
+      <ng-template [ngTemplateOutlet]="actions"></ng-template>
+    </div>
+  </div>
+</mat-card-title>
+<mat-card-content>
+  <div class="x-scroll">
+    <ng-content></ng-content>
+    <h3 *ngIf="config.total === 0 && config.noRecord" class="noData">
+      No Record Found
+    </h3>
+  </div>
+  <mat-paginator
+    *ngIf="config.total > 0 && config.options.pagination"
+    [length]="config.total"
+    [pageSize]="limit"
+    [pageIndex]="page - 1"
+    [pageSizeOptions]="[5, 10, 25, 100]"
+    (page)="onPageHandler($event)"
+    showFirstLastButtons
+  >
+  </mat-paginator>
+</mat-card-content>

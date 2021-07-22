@@ -1,0 +1,21 @@
+<div class="mat-dialog-wrap">
+    <div class="filter__header mat-elevation-z1 fill--primary">
+      <span class="filter__title">{{data?.config?.type}} </span>
+    </div>
+    <mat-dialog-content>
+        <div class="item">
+            <span mat-flat-button type="button" color="primary" *ngFor="let option of data?.list;let i = index;">
+                
+                {{option[data?.config?.itemName?.view]}}
+                <mat-icon aria-hidden="false" aria-label="Example home icon" (click)="delete(i)">clear</mat-icon>
+            </span>
+            
+        </div>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <div class="wrap-btn">
+            <button mat-stroked-button type="button" mat-dialog-close>Close</button>
+        </div>
+    </mat-dialog-actions>
+</div>
+  

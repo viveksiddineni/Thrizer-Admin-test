@@ -1,0 +1,9 @@
+<!-- <div class="btn_wrap">
+    <button (click)="insertHtml()" class="btn_primary">Insert HTML</button>
+</div> -->
+<quill-editor [modules]="modules" [formControl]="quillConfig?.control" (onContentChanged)="onContentChanged($event)" [style]="{ minHeight: '250px' }">
+</quill-editor>
+<mat-error *ngIf="quillConfig?.control.touched && quillConfig?.control.invalid">
+    {{ quillConfig?.control | validate: quillConfig?.label }}</mat-error>
+
+<!-- <quill-view-html [content]="htmlString" theme="snow"></quill-view-html> -->

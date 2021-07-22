@@ -1,0 +1,62 @@
+@use 'theme/dialog' as *;
+$mat-menu-side-padding: 16px !default;
+$scrollbar-width: 17px;
+$clear-button-width: 20px;
+.mat-select-search-hidden {
+  visibility: hidden;
+}
+.mat-form-field{
+  padding: 10px 10px 0;
+  height: 44px;
+}
+.mat-select-search-inner {
+  position: absolute;
+  top: 0;
+  left:0;
+  width: 100%;
+  height:0;
+  border-bottom: 1px solid #cccccc;
+  background: white;
+  z-index: 100;
+  &.mat-select-search-inner-multiple {
+    width: calc(100% + #{2 * $mat-menu-side-padding - $scrollbar-width});
+    min-width: calc(100% + #{2 * $mat-menu-side-padding - $scrollbar-width});
+  }
+}
+
+::ng-deep .mat-select-search-panel {
+  /* allow absolute positioning relative to outer options container */
+  transform: none !important;
+  // max-height: 350px;
+  min-width: 352px!important;
+  margin-left:38px!important;
+}
+
+.mat-select-search-input {
+  padding: $mat-menu-side-padding;
+  padding-right: $mat-menu-side-padding + $clear-button-width;
+  box-sizing: border-box;
+  background-color:#fff;
+}
+
+.mat-select-search-no-entries-found {
+  padding: $mat-menu-side-padding;
+}
+
+.mat-select-search-clear {
+  position: absolute;
+  right: 0;
+  top: 4px;
+}
+
+.searchSuffix {
+  position: absolute;
+  top: -24px;
+  right: 0;
+}
+
+::ng-deep .cdk-overlay-pane-select-search {
+  /* correct offsetY so that the selected option is at the position of the select box when opening */
+  margin-top: -50px;
+}
+

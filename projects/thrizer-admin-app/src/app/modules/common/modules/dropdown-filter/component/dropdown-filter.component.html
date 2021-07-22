@@ -1,0 +1,32 @@
+<h4 class="mat-h4">{{ dropdownConfig?.label }}</h4>
+<mat-form-field appearance="outline">
+  <mat-select
+    [multiple]="dropdownConfig?.multiple"
+    [placeholder]="dropdownConfig?.label"
+    (openedChange)="selectionDialogChange($event)"
+    (selectionChange)="emitSelectionChange($event)"
+    [formControl]="dropdownConfig?.control"
+  >
+    <app-select-search
+      *ngIf="dropdownConfig?.search"
+      (search)="searchFromList($event)"
+    >
+    </app-select-search>
+    <!-- <mat-option *ngIf="!dropdownConfig?.search &&  !dropdownConfig.hideAll" [value]="''">All</mat-option> -->
+    <mat-option
+      *ngFor="let item of dropdownConfig?.list"
+      [value]="item[accessKeys['value']]"
+    >
+      {{ item[accessKeys["viewValue"]] }}</mat-option
+    >
+    <mat-option
+      [value]=""
+      *ngIf="dropdownConfig?.search && dropdownConfig?.list.length === 0"
+    >
+      No {{ dropdownConfig?.label }}
+    </mat-option>
+  </mat-select>
+  <mat-error>{{
+    dropdownConfig?.control | validate: dropdownConfig?.label
+  }}</mat-error>
+</mat-form-field>

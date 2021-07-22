@@ -1,0 +1,22 @@
+<div class="page_main_wrapper">
+    <div class="heading">
+        <h3>Insert HTML</h3>
+        <figure class="close_btn">
+            <img src="assets/images/close.svg" alt="">
+        </figure>
+
+    </div>
+    <div class="content_wrapper">
+        <form [formGroup]="htmlEditorForm" (submit)="submit()">
+            <mat-form-field appearance="outline">
+                <textarea matInput formControlName="editor"></textarea>
+                <mat-error>{{ htmlEditorForm | getControl: ["editor"] | validate: "HTML" }}
+                </mat-error>
+            </mat-form-field>
+            <div class="action_wrap">
+                <button type="button" (click)="close()" class="btn_primary">Cancel</button>
+                <button type="submit" class="btn_primary">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>

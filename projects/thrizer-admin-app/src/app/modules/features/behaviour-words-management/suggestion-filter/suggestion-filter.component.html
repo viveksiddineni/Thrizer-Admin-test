@@ -1,0 +1,13 @@
+<app-filter (apply)="onApplyHandler()" (reset)="resetFilter()">
+    <form [formGroup]="filterForm">
+      <div>
+        <app-date-filter  [dateObject]="dateFilter"></app-date-filter>
+      </div>
+      <div>
+        <app-multiselect-dropdown
+        *ngIf="statusDropdownData"
+        [dropdown]="statusDropdownData"
+      ></app-multiselect-dropdown>
+      </div>
+    </form>
+  </app-filter>

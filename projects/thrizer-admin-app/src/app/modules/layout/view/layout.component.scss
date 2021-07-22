@@ -1,0 +1,39 @@
+// @use 'global' as *;
+//----- comment ----
+// :host {
+//     --header: 70px;
+//     --sidebar: 220px;
+// }
+
+// :host ::ng-deep .wrapper {
+//     position: relative;
+//     background: #ffffff;
+//     padding-top: var(--header);
+//     padding-left: var(--sidebar);
+//     min-height:100vh;
+//     .header_wrap {
+//         position: fixed;
+//         top: 0;
+//         left: 0;
+//         z-index: 99;
+//         width: 100%;
+//         background: #ffffff;
+//     }
+//     .sidebar_wrap {
+//         position: fixed;
+//         top: var(--header);
+//         left: 0;
+//         bottom: 0;
+//         z-index: 99;
+//         width: var(--sidebar);
+//         box-shadow: 5px 0px 7px -5px rgba(115,115,115,0.75);
+//     }
+//     .center_wrapper {
+//         padding: 15px;
+//         height: 100%;
+//         background-color: $bg;
+//         overflow-x: hidden;
+//         overflow-y: auto;
+//         @include radius (5px);
+//     }
+// }

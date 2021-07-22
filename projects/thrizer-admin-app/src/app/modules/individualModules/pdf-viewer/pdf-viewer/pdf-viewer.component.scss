@@ -1,0 +1,46 @@
+// @import 'app.scss';
+.popup-wrapper {
+  margin:-24px;
+  overflow: hidden;
+  position: relative;
+  .popup-inner{
+      background-color: #f5f6fa;
+      display: flex;
+      position: relative;
+      align-items: center;
+      .close {
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        top: 50%;
+        right: 15px;
+        transform: translateY(-50%);
+        z-index:9;
+        opacity: 1;
+        svg {
+          fill: #fff;
+        }
+      }
+      h1{
+        width: 100%;
+        padding: 10px 0;
+        margin-bottom:0;
+        background: #3d82ab;
+        text-align: center;
+        color: #fff;
+        font-weight: 600;
+      }
+  }
+  .pdf-container {
+    .pdfview {
+      max-height: 500px;
+      overflow-y: auto;
+      background: #fff;
+    }
+  }
+}
+
+
+iframe .ndfHFb-c4YZDc-i5oIFb.ndfHFb-c4YZDc-e1YmVc .ndfHFb-c4YZDc-Wrql6b {
+  display: none !important;
+}

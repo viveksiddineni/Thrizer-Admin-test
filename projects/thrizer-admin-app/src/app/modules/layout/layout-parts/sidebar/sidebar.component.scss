@@ -1,0 +1,160 @@
+
+// //---- comment --------
+// .mat-list-base {
+//     overflow-x: hidden;
+//     overflow-y: auto;
+//     height: 100%;
+//     padding: 0;
+//     .mat-list-item {
+//         font-family:'Poppins', sans-serif;
+//         line-height: 1.2;
+//         height: 40px;
+//         font-size: 13px;
+//         color: #788386;
+//         font-weight: 500;
+//         border-bottom: 0.5px solid #e6e5e5;
+//         &.parent-menu{
+//             position: relative;
+//             &::before{
+//                 border-bottom: 2px solid #90a1b5;
+//                 border-right: 2px solid #90a1b5;
+//                 content: '';
+//                 display: block;
+//                 height: 10px;
+//                 margin-top: -8px;
+//                 pointer-events: none;
+//                 position: absolute;
+//                 right: 15px;
+//                 top: 50%;
+//                 -webkit-transform-origin: 66% 66%;
+//                 -ms-transform-origin: 66% 66%;
+//                 transform-origin: 66% 66%;
+//                 -webkit-transform: rotate(45deg);
+//                 -ms-transform: rotate(45deg);
+//                 transform: rotate(45deg);
+//                 -webkit-transition: all 0.15s ease-in-out;
+//                 transition: all 0.15s ease-in-out;
+//                 width: 10px;
+//             }
+//             &.cssClass{
+//                 &:before{
+//                     -webkit-transform: rotate(-135deg);
+//                     -ms-transform: rotate(-135deg);
+//                     transform: rotate(-135deg);
+//                 }
+//             }
+//         }
+//         .menu-icon{
+//             width:24px;
+//             height:24px;
+//             position: absolute;
+//             left:10px;
+//             top:8px;
+//             background-position: center center;
+//             &.users{
+//                 background-image: url("../../../../../assets/images/User.svg");  
+//             }
+//             &.garages{
+//                 background-image: url("../../../../../assets/images/Garage.svg");
+//             }
+//             &.categories{
+//                 background-image: url("../../../../../assets/images/Category.svg");
+//             }
+//             &.payments{
+//                 background-image: url("../../../../../assets/images/Payments.svg");
+//             }
+//             &.payout{
+//                 background-image: url("../../../../../assets/images/Payout.svg");
+//             }
+//             &.help-request{
+//                 background-image: url("../../../../../assets/images/Help.svg");
+//             }
+//             &.rating-review{
+//                 background-image: url("../../../../../assets/images/Review.svg");
+//             }
+//             &.request{
+//                 background-image: url("../../../../../assets/images/Request.svg");
+//             }
+//             &.vehicels{
+//                 background-image: url("../../../../../assets/images/Vehicle.svg");
+//             }
+//             &.support{
+//                 background-image: url("../../../../../assets/images/Support.svg");
+//             }
+//             &.dashboard{
+//                 background-image: url("../../../../../assets/images/Dashboard.svg");
+//             }
+//             &.notification{
+//                 background-image: url("../../../../../assets/images/Notification.svg");
+//             }
+//         }
+//         &.active {
+//             color: #fff;
+//             font-weight: 800;
+//             background:#788386;
+//             .menu-icon{
+//                 &.users{
+//                     background-image: url("../../../../../assets/images/User-white.svg");
+//                 }
+//                 &.garages{
+//                     background-image: url("../../../../../assets/images/Garage-white.svg");
+                    
+//                 }
+//                 &.categories{
+//                     background-image: url("../../../../../assets/images/Category-white.svg");
+//                 }
+//                 &.payments{
+//                     background-image: url("../../../../../assets/images/Payments-white.svg");
+//                 }
+//                 &.payout{
+//                     background-image: url("../../../../../assets/images/Payout-white.svg");
+//                 }
+//                 &.help-request{
+//                     background-image: url("../../../../../assets/images/Help-white.svg");
+//                 }
+//                 &.rating-review{
+//                     background-image: url("../../../../../assets/images/Review-white.svg");
+//                 }
+//                 &.request{
+//                     background-image: url("../../../../../assets/images/Request-white.svg");
+//                 }
+//                 &.vehicels{
+//                     background-image: url("../../../../../assets/images/Vehicle-white.svg");
+//                 }
+//                 &.support{
+//                     background-image: url("../../../../../assets/images/Support-white.svg");
+//                 }
+//                 &.dashboard{
+//                     background-image: url("../../../../../assets/images/Dashboard-white.svg");
+//                 }
+//                 &.notification{
+//                     background-image: url("../../../../../assets/images/Notification-white.svg");
+//                 }
+//             }
+//         }
+//     }
+// }
+
+:host ::ng-deep{
+    .sidebar_wrpper{
+        .mat-list-base {
+            padding-top: 0;
+            
+        }
+        .mat-list-item {
+            border-bottom: 1px solid #e8e8e8;
+            height: 60px !important;
+            .sidebar_icon {
+                width: 25px;
+                height: 25px;
+                margin-right: 10px;
+            }
+        }
+    }
+}
+.sidebar_wrpper{
+    width: 220px;
+    height: calc(100vh - 60px);
+    background: #eeeeee38;
+    border-right: 1px solid #e8e8e8;
+}

@@ -1,0 +1,10 @@
+<!-- <div *ngIf="showLoader" class="loader">
+  <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+</div> -->
+<div class="loader-overlay" *ngIf="showLoader">
+  <div class="progress">
+    <div class="indeterminate"></div>
+  </div>
+</div>
+<ps-toast-notification></ps-toast-notification>
+<router-outlet></router-outlet>

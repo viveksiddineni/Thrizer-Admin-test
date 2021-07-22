@@ -1,0 +1,46 @@
+:host ::ng-deep {
+    .cstm_check_wrapper {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        .mat-radio-group {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        .mat-radio-button {
+            margin-right: 10px;
+            margin-bottom: 10px;
+            margin-left: 0;
+        }
+        // .mat-radio-label-content {
+        //     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+        //     border: solid 1px #cccccc;
+        //     background-color: #ffffff;
+        //     font-size: 13px;
+        //     padding: 5px 20px;
+        //     border-radius: 4px;
+        //     display: flex;
+        //     color: #fabf32;
+        //     font-weight: 700;
+        //     align-items: center;
+        //     img {
+        //         margin: 0 2px;
+        //     }
+        // }
+        // .mat-radio-checked {
+        //     .mat-radio-label-content {
+        //         background-color: #dc2c10;
+        //         color: #fff;
+        //     }
+        // }
+        // .mat-radio-container {
+        //     display: none;
+        // }
+    }
+}
+
+.mat-h4 {
+    font-weight: 600;
+    margin-top: 10px;
+}

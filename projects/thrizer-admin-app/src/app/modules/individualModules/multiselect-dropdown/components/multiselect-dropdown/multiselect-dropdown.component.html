@@ -1,0 +1,23 @@
+<div class="form-group" *ngIf="dropdownConfig">
+  <!-- <mat-label *ngIf="dropdownConfig?.label">{{ dropdownConfig?.label }}</mat-label> -->
+  <ng-multiselect-dropdown [settings]="dropdownSettings" [placeholder]="dropdownConfig?.placeHolder"
+    [data]="dropdownList" (onSelect)="onItemSelect($event)" (onDeSelect)="onItemSelect($event)"
+    [formControl]="multiselectForm.get('item')"
+    [disabled]="dropdownConfig?.controlsName?.disabled || dropdownConfig?.controlsId?.disabled ">
+  </ng-multiselect-dropdown>
+  <span class="error" *ngIf="
+      dropdownConfig?.controlsId &&
+      (multiselectForm.get('item').dirty || dropdownConfig?.controlsId?.dirty) &&
+        dropdownConfig?.controlsId?.invalid;
+      else nameError
+    ">{{ dropdownConfig?.controlsId | validate: dropdownConfig?.label }}</span>
+  <ng-template #nameError>
+    <span class="error" *ngIf="
+        dropdownConfig?.controlsName &&
+        (multiselectForm.get('item').dirty ||dropdownConfig?.controlsName?.dirty)&&
+        dropdownConfig?.controlsName?.invalid
+      ">{{
+        dropdownConfig?.controlsName | validate: dropdownConfig?.label
+      }}</span>
+  </ng-template>
+</div>

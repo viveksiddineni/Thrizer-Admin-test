@@ -1,0 +1,58 @@
+<div class="wrapper-location" [ngClass]="{'bg_cls': className , 'adress_selected': locations.length>0}">
+    <div class="chip-wrapper" [hidden]="locations.length === 0">
+        <mat-chip-list #chipList>
+            <mat-chip *ngFor="let loc of locations | slice:0:locationCount;let i = index;" [selectable]="selectable"
+                [removable]="removable" (removed)="remove(i)">
+                <span class="elipsis">
+                    {{loc[locationSearchObject.viewKey]}}
+                </span>
+                <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+            </mat-chip>
+            <button mat-button *ngIf="locations.length>locationCount" (click)="isAddMore = !isAddMore"
+                class="more_btn">{{locations.length - locationCount}}
+                {{'MORE_TEXT'}}</button>
+            <div class="tag_wrapper" [ngClass]="{'active':isAddMore}">
+                <figure class="close_btn" (click)="isAddMore = !isAddMore">
+                    <img src="assets/images/ic_notification_close.svg" alt="">
+                </figure>
+
+
+                <span class="tag" *ngFor="let loc of locations | slice:locationCount:locations.length;let i = index;">
+                    {{loc[locationSearchObject.viewKey]}}
+                    <mat-icon (click)="remove(i+locationCount)">cancel</mat-icon>
+                </span>
+            </div>
+        </mat-chip-list>
+    </div>
+    <div class="custom_loction_search">
+        <mat-form-field class="example-full-width" appearance="outline">
+
+            <input type="text" [placeholder]="locationSearchObject.placeholder"
+                [readOnly]="locations.length ===maxLocationCount" matInput [formControl]="locationControl"
+                [matAutocomplete]="auto">
+            <!-- <mat-icon style="cursor: pointer;" *ngIf="!searching" (click)="getCurrentPosition()" matSuffix> -->
+                <!-- <img src="assets/images/pin-icon.svg" alt=""> -->
+            <!-- </mat-icon> -->
+
+            <mat-spinner matSuffix diameter="20" *ngIf="searching"></mat-spinner>
+
+            <!-- <mat-hint>{{locationSearchObject.control?.invalid && !locationSearchObject.control?.pristine}}</mat-hint> -->
+            <!-- <mat-hint>{{locationSearchObject.control?.errors | json}}{{locationSearchObject.control?.invalid}}
+                {{locationSearchObject.control?.pristine}}}</mat-hint> -->
+
+            <mat-autocomplete (optionSelected)="optionSelected($event)" #auto="matAutocomplete" autoScroll
+               >
+                <mat-option *ngFor="let option of results" [value]="option">
+                    {{option[locationSearchObject.viewKey]}}
+                </mat-option>
+                <ng-container *ngIf="loading">
+                    <mat-spinner diameter="10"></mat-spinner>
+                </ng-container>
+            </mat-autocomplete>
+        </mat-form-field>
+        <span class="error" *ngIf="locationSearchObject.control?.invalid && !locationSearchObject.control?.pristine">
+            {{'SEARCH_REQUIRED'}}
+        </span>
+    </div>
+
+</div>

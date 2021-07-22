@@ -1,0 +1,44 @@
+<app-breadcrumb>
+    <li class="breadcrumb-item">{{title}}</li>
+</app-breadcrumb>
+<mat-card>
+    <form [formGroup]="suggestionForm" (submit)="addOrEdit()">
+        <mat-dialog-content>
+            <mat-label>Type of Suggestion</mat-label>
+            <mat-form-field appearance="outline">
+                <mat-select formControlName="type" placeholder="Select a Type of Suggestion">
+                    <mat-option *ngFor="let item of suggestionTypeArr" [value]="item.value">{{ item.viewValue }}
+                    </mat-option>
+                </mat-select>
+                <mat-error>{{
+                    suggestionForm
+                      | getControl: ["type"]
+                      | validate: "Suggestion Type"
+                  }}</mat-error>
+            </mat-form-field>
+          <mat-label
+            >Enter the suggestion you want to create below*</mat-label
+          >
+          <mat-form-field appearance="outline">
+            <input
+              matInput
+              formControlName="label"
+              placeholder="Type a suggestion"
+            />
+            <mat-error>{{
+                suggestionForm
+                | getControl: ["label"]
+                | validate: "Suggestion"
+            }}</mat-error>
+          </mat-form-field>
+        </mat-dialog-content>
+        <mat-dialog-actions align="center">
+          <div class="wrap-btn">
+            <button mat-stroked-button type="button" mat-dialog-close>
+              Cancel
+            </button>
+            <button mat-flat-button type="submit" color="primary">Continue</button>
+          </div>
+        </mat-dialog-actions>
+      </form>
+</mat-card>

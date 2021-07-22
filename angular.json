@@ -1,0 +1,231 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "thrizer-admin-app": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/thrizer-admin-app",
+      "sourceRoot": "projects/thrizer-admin-app/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@labshare/shell-ui:browser",
+          "options": {
+            "outputPath": "dist/thrizer-admin-app",
+            "index": "projects/thrizer-admin-app/src/index.html",
+            "main": "projects/thrizer-admin-app/src/main.ts",
+            "polyfills": "projects/thrizer-admin-app/src/polyfills.ts",
+            "tsConfig": "projects/thrizer-admin-app/tsconfig.app.json",
+            "aot": false,
+            "assets": [
+              "projects/thrizer-admin-app/src/favicon.ico",
+              "projects/thrizer-admin-app/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/pink-bluegrey.css",
+              "projects/thrizer-admin-app/src//styles.scss"
+
+            ],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "projects/thrizer-admin-app/src//scss"
+              ]
+            },
+            "scripts": [],
+            "preserveSymlinks": true
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/thrizer-admin-app/src/environments/environment.ts",
+                  "with": "projects/thrizer-admin-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@labshare/shell-ui:dev-server",
+          "options": {
+            "browserTarget": "thrizer-admin-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "thrizer-admin-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "thrizer-admin-app:build"
+          }
+        },
+        "test": {
+          "builder": "@labshare/shell-ui:karma",
+          "options": {
+            "main": "projects/thrizer-admin-app/src/test.ts",
+            "polyfills": "projects/thrizer-admin-app/src/polyfills.ts",
+            "tsConfig": "projects/thrizer-admin-app/tsconfig.spec.json",
+            "karmaConfig": "projects/thrizer-admin-app/karma.conf.js",
+            "assets": [
+              "projects/thrizer-admin-app/src/favicon.ico",
+              "projects/thrizer-admin-app/src/assets"
+            ],
+            "styles": [
+              "projects/thrizer-admin-app/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/thrizer-admin-app/tsconfig.app.json",
+              "projects/thrizer-admin-app/tsconfig.spec.json",
+              "projects/thrizer-admin-app/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "thrizer-admin-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "thrizer-admin-app:serve:production"
+            }
+          }
+        },
+        "electron": {
+          "builder": "@labshare/shell-ui:electron",
+          "options": {
+            "browserTarget": "thrizer-admin-app:build",
+            "baseHref": "./"
+          }
+        },
+        "pack-electron": {
+          "builder": "@labshare/shell-ui:pack-electron",
+          "options": {
+            "browserTarget": "thrizer-admin-app:build",
+            "outputPath": "dist/thrizer-admin/electron",
+            "plaform": "mac",
+            "baseHref": "./"
+          }
+        },
+        "pack-cordova": {
+          "builder": "@labshare/shell-ui:pack-cordova",
+          "options": {
+            "browserTarget": "thrizer-admin-app:build",
+            "outputPath": "dist/thrizer-admin/cordova",
+            "plaform": "ios",
+            "baseHref": "./",
+            "cordovaAssets": false
+          }
+        },
+        "pack-sharepoint": {
+          "builder": "@labshare/shell-ui:pack-sharepoint",
+          "options": {
+            "browserTarget": "thrizer-admin-app:build",
+            "baseHref": "./",
+            "outputPath": "dist/thrizer-admin/sharepoint",
+            "spVersion": "online",
+            "sharepoint": {
+              "solutionName": "thrizer-admin-app",
+              "solutionGuid": "4c874b09-7940-4c1c-9203-d1b6c3f1d74d",
+              "zippedPackage": "solution/thrizer-admin.sppkg",
+              "webPartGuid": "c3ad6298-a085-4269-9b94-357640cdcf69",
+              "webPartAlias": "thrizer-admin-app",
+              "webPartTitle": "thrizer-admin-app",
+              "webPartDescription": "thrizer-admin-app description",
+              "webPartPropertiesDescription": "thrizer-admin-app properties description"
+            }
+          }
+        }
+      }
+    },
+    "thrizer-admin-lib": {
+      "projectType": "library",
+       "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/thrizer-admin-lib",
+      "sourceRoot": "projects/thrizer-admin-lib/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/thrizer-admin-lib/tsconfig.lib.json",
+            "project": "projects/thrizer-admin-lib/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/thrizer-admin-lib/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/thrizer-admin-lib/src/test.ts",
+            "tsConfig": "projects/thrizer-admin-lib/tsconfig.spec.json",
+            "karmaConfig": "projects/thrizer-admin-lib/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/thrizer-admin-lib/tsconfig.lib.json",
+              "projects/thrizer-admin-lib/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }    
+  },
+  "defaultProject": "thrizer-admin-app",
+  "cli": {
+    "analytics": false
+  }
+}

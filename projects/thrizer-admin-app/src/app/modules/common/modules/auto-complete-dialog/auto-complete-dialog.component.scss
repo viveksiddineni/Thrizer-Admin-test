@@ -1,0 +1,66 @@
+@use 'var' as *;
+@use 'theme/dialog' as *;
+p {
+    font-size: 15px;
+    font-weight: 500;
+    color: $gry;
+    &.mb {
+        margin-bottom: 30px;
+    }
+}
+.filter__header {
+    height: 46px;
+    width: calc(100% + 48px);
+    margin: -24px 0 10px -24px;
+    display: flex;
+    align-items: center;
+    color: #FFF;
+    background-color: #bfd730;
+    padding:0 15px;
+    justify-content:center;
+  }
+  .mat-dialog-content{
+      padding-top:25px;
+  }
+  .filter__title {
+    font-size: 19px;
+    font-weight: 500;
+  }
+  
+  .wrap-btn{
+    padding-top:15px;
+    button:first-child{
+        margin-right:15px;
+    }
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    span{
+      height:28px;
+      display: flex;
+      align-items:center;
+      display: flex;
+      align-items: center;
+      background: #bfd730;
+      color:#fff;
+      padding: 2px 5px;
+      border-radius: 3px;
+      margin: 0 5px 5px 0;
+      white-space: nowrap;
+      .mat-icon{
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+      }
+      &:first-child{
+        margin-left:2px;
+      }
+    }
+    a{
+      white-space: nowrap;
+    }
+  }

@@ -1,0 +1,10 @@
+<mat-form-field class="search_filter" appearance="outline">
+    <input type="text" matInput [placeholder]="placeholder" (keyup.enter)="searchResult()" [(ngModel)]="search">
+    <button type="button" mat-button *ngIf="search.trim()" matPrefix mat-icon-button aria-label="Clear" (click)="resetSearch()">
+      <mat-icon>close</mat-icon>
+    </button>
+    <button type="button" mat-icon-button (click)="searchResult()" matSuffix>      
+      <mat-icon>search</mat-icon>
+    </button>
+</mat-form-field>
+<span matPrefix>  </span>

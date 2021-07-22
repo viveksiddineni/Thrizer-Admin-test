@@ -1,0 +1,46 @@
+<label>{{ inputConfig?.label }}</label>
+<div class="autocomplete">
+  <div class="selected-items">
+    <div class="item">
+      <span *ngFor="
+          let item of selectedItems | slice: 0:inputConfig?.viewTilesCount;let i = index
+        " mat-flat-button type="button" color="primary">
+        {{ item[inputConfig?.itemName?.view] }}
+        <mat-icon aria-hidden="false" (click)="remove(i)" aria-label="Example home icon">clear</mat-icon>
+      </span>
+      <a *ngIf="selectedItems.length > inputConfig?.viewTilesCount"
+        (click)="viewMore()">+{{ selectedItems.length - inputConfig?.viewTilesCount }} more</a>
+    </div>
+  </div>
+  <div class="field-wrapper">
+    <mat-form-field class="example-full-width flex-wrapper" appearance="fill">
+
+      <input type="text" (input)="optionSubject$.next(field?.value)" [placeholder]="inputConfig?.placeholder" matInput
+        [formControl]="inputControl" [matAutocomplete]="auto"
+        [readonly]="selectedItems.length>=inputConfig?.maximumRequired" #field />
+      <span class="error" *ngIf="selectedItems?.length < inputConfig?.minimumRequired && inputConfig?.control?.dirty">
+        Atleast {{inputConfig?.minimumRequired}} {{inputConfig?.type ||''}} required
+      </span>
+
+      <mat-autocomplete [displayWith]="getOptionText" (optionSelected)="optionSelected($event)" #auto="matAutocomplete"
+        autoScroll>
+        <ng-container>
+          <mat-option *ngFor="let option of optionList" [value]="option">
+            <div class="flex-item">
+              <div class="left-item">
+                {{ option[inputConfig?.itemName?.view] }}
+              </div>
+              <div *ngIf="inputConfig?.itemCode" class="right-item">
+                {{ inputConfig?.type }} Code:
+                {{ option[inputConfig?.itemCode?.view] }}
+              </div>
+            </div>
+          </mat-option>
+        </ng-container>
+        <ng-container *ngIf="false">
+          <mat-spinner diameter="10"></mat-spinner>
+        </ng-container>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+</div>

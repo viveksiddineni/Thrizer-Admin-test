@@ -1,0 +1,43 @@
+a {
+    cursor: pointer;
+}
+
+ul,
+li {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+figure {
+    margin: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #f7f7f7 inset !important;
+    box-shadow: 0 0 0 30px #f7f7f7 inset !important;
+}
+
+// Scroll baar css
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    z-index: 99;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: #eee;
+    z-index: 99;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background: $thm;
+    border-radius: 3px;
+  }

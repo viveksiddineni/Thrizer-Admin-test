@@ -1,0 +1,15 @@
+<div class="mat-dialog-wrap">
+    <div class="filter__header mat-elevation-z1 fill--primary">
+        <span class="filter__title">Confirmation</span>
+      </div>
+    <h2 mat-dialog-title class="center">Specify Reason for Reject</h2>
+    <mat-dialog-content>
+      <ng-container>
+        <mat-checkbox *ngFor="let reason of rejectReasons"  (change)="onChangeReason($event.checked,reason)">{{reason}}</mat-checkbox>
+      </ng-container>
+    </mat-dialog-content>
+    <mat-dialog-actions align="center">
+        <button mat-stroked-button cdkFocusInitial mat-dialog-close>Cancle</button>
+        <button [disabled]="selectedReason?.length==0" (click)="onReject()" mat-flat-button color="primary">Reject</button>
+    </mat-dialog-actions>
+</div>
