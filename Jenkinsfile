@@ -41,7 +41,7 @@ pipeline {
             when { expression { return env.BUILD == 'true' }}
             steps {
                 retry(3) {
-                    sshagent (credentials: ['gitcredsthreethrizer']) { 
+                    sshagent (credentials: ['917d2cc8-84fe-4faf-89e5-25ea6649be83']) { 
                         nodejs(configId: 'kw-npmrc', nodeJSInstallationName: 'Node.js 12.16') {
                             withEnv([
                                 "IMAGE_NAME=labshare/thrizer_clinician_labshare_api",
