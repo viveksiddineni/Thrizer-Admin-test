@@ -41,7 +41,7 @@ pipeline {
             when { expression { return env.BUILD == 'true' }}
             steps {
                 retry(3) {
-                    sshagent (credentials: ['87c9deb3-051e-458e-a18f-236471a99902']) { 
+                    sshagent (credentials: ['gitcredsthreethrizer']) { 
                         nodejs(configId: 'kw-npmrc', nodeJSInstallationName: 'Node.js 12.16') {
                             withEnv([
                                 "IMAGE_NAME=PLEASE UPDATE WITH DEPLOYMENT NAME",
