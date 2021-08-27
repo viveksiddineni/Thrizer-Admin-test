@@ -10,7 +10,7 @@ pipeline {
     environment {
         PROJECT_NAME = "thrizer-admin"
         TYPE = "web"
-        DOCKER_REPO_NAME = "labshare/thrizer_clinician_labshare_api"
+        DOCKER_REPO_NAME = "labshare/thrizer_admin_ui"
     }
     agent {
         label 'aws && build && linux && ubuntu'
@@ -47,7 +47,7 @@ pipeline {
                     sshagent (credentials: ['917d2cc8-84fe-4faf-89e5-25ea6649be83']) {
                         nodejs(configId: 'kw-npmrc', nodeJSInstallationName: 'Node.js 12.16') {
                             withEnv([
-                                "IMAGE_NAME=labshare/thrizer_clinician_labshare_api",
+                                "IMAGE_NAME=labshare/thrizer_admin_ui",
                                 "BUILD_VERSION=" + (params.BUILD_VERSION ?: env.BUILD_VERSION)
                             ]) {
                                 withCredentials([string(credentialsId: 'LABSHARE_NPM_TOKEN', variable: 'LABSHARE_NPM_TOKEN')]) {
@@ -83,7 +83,7 @@ pipeline {
                     configFile(fileId: 'thrizer-admin-ci-compose-file', targetLocation: 'docker-compose.yml')
                 ]) {
                         withEnv([ 
-                          "IMAGE_NAME=labshare/thrizer_clinician_labshare_api",
+                          "IMAGE_NAME=labshare/thrizer_admin_ui",
                           "BUILD_VERSION=${params.BUILD_VERSION != '' ? params.BUILD_VERSION : env.BUILD_VERSION}"]) {
                             script {
                                 def docker = new org.labshare.Docker()
